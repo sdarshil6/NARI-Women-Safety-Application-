@@ -5,7 +5,7 @@
 ![2](https://user-images.githubusercontent.com/85783343/195533760-b3e4556c-2f51-44a5-a09c-03d347584ae1.png)
 ![3](https://user-images.githubusercontent.com/85783343/195533779-1409e16f-39ae-46d3-92ae-aa5f3930edfe.png)
 
-#Screenshots of the application
+# Screenshots of the application
 
 ![2](https://user-images.githubusercontent.com/85783343/195534312-7d81f405-371c-4524-97ae-a279e003be00.jpeg)
 ![1jpeg](https://user-images.githubusercontent.com/85783343/195534333-86ec22aa-729c-4794-81cc-92e9fb5bb5bb.jpeg)
