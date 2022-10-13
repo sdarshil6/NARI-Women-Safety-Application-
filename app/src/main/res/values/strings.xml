@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">CurrentLocation</string>
+
+    <string name="et_emailLogin">Phone Number</string>
+    <string name="et_passwordLogin">Enter OTP</string>
+    <string name="tv_forgotPassword">Forgot Password?</string>
+    <string name="bt_login">Login</string>
+    <string name="tv1">Don\'t have an account?</string>
+    <string name="tv_registerNow">Register Now</string>
+    <string name="tv_register">Register</string>
+    <string name="et_fullname_hint">Your Full Name</string>
+    <string name="et_emailRegister_hint">Age</string>
+    <string name="et_passwordRegister_hint">Gender</string>
+    <string name="et_confirmPassword_hint">Phone Number</string>
+    <string name="bt_register">Register</string>
+    <string name="tv4">By registering\, you agree to</string>
+    <string name="tv_TC">Terms &amp; Conditions</string>
+    <string name="et_email_fp_hint">Enter your email here</string>
+    <string name="bt_sendResetLink">Send Password Reset Link</string>
+    <string name="tv_branchName">Information Technology</string>
+    <string name="tv_semesterName">Semester 1</string>
+    <string name="tv_yearName">Year 1</string>
+    <string name="tv_subjectName">Subject 1</string>
+    <string name="tv_gtu">GTU Instant Prep</string>
+    <string name="nav_share">Share this app</string>
+    <string name="nav_about">About</string>
+    <string name="nav_help">Help</string>
+    <string name="nav_logout">Log Out</string>
+    <string name="open">Drawer Open</string>
+    <string name="close">Drawer close</string>
+
+    <string name="channel1_name">Downloads</string>
+    <string name="channel1_description">PDF Downloads</string>
+    <string name="notificationTitle_channel1">YAY! PDF Downloaded</string>
+    <string name="notificationContentText_channel1">Tap to view PDF</string>
+    <string name="notificationSummaryText_channel1">Download Complete</string>
+    <string name="notificationBigText_channel1_part1">The download of </string>
+    <string name="notificationBigText_channel1_part2">has been successfully completed </string>
+    <string name="space"> </string>
+
+    <string name="otp_code_text">CODE</string>
+    <string name="otp_verification_text">Verification</string>
+    <string name="otp_description_text">Description</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="title_activity_maps2">MapsActivity2</string>
+
+</resources>

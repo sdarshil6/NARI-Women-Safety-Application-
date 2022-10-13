@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/activity_user_login_bg">
+
+    <Button
+        android:id="@+id/bt_otpSend"
+        android:layout_width="221dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="364dp"
+        android:backgroundTint="#4467cc"
+        android:text="SEND OTP"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/bt_verifyOTP"
+        android:layout_width="208dp"
+        android:layout_height="63dp"
+        android:layout_marginTop="532dp"
+        android:backgroundTint="#4467cc"
+        android:text="VERIFY CODE"
+        android:textSize="20sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_enterOTP"
+        android:layout_width="284dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="448dp"
+        android:ems="10"
+        android:hint="Enter OTP"
+        android:inputType="phone"
+        android:textColor="#050505"
+        android:textSize="24sp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_numberLogin"
+        android:layout_width="310dp"
+        android:layout_height="66dp"
+        android:layout_marginTop="284dp"
+        android:ems="10"
+        android:hint="Enter Your Number Here"
+        android:inputType="phone"
+        android:textColor="#0B0A0A"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_goToRegister"
+        android:layout_width="375dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="620dp"
+        android:clickable="true"
+        android:minHeight="48dp"
+        android:text="New User? Click here to register"
+        android:textColor="@color/white"
+        android:textSize="26sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
