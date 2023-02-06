@@ -158,7 +158,6 @@ public class GuardianLoginActivity extends AppCompatActivity {
                             databaseReference.child("Guardians").setValue(guardianInfo);
                             databaseReference.child("Guardians").child("user-info").setValue("+91" + et_userPhoneNumber.getText().toString());
 
-
                         }
 
                         else {

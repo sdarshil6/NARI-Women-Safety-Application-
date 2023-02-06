@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -78,6 +79,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     private final int MIN_DISTANCE = 1;  // 1 METER
 
+    String userNumber;
+
+    public String Guardian_Number;
+
 
 
     @Override
@@ -86,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         setContentView(R.layout.activity_main);
 
         Intent i = getIntent();
-        String userNumber = i.getStringExtra("userNumber");
+        userNumber = i.getStringExtra("userNumber");
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("Users").child(userNumber).child("LocatinInfo");
         newDatabaseReference = firebaseDatabase.getReference().child("Users").child(userNumber).child("GuardianInfo").child("guardianPhone1");
@@ -132,6 +137,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
 
+                getlocationupdates();
                 Intent i = new Intent(MainActivity.this, MapsActivity2.class);
                 i.putExtra("userNumber", userNumber);
                 startActivity(i);
@@ -153,63 +159,18 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     }
 
-////    private void getLocation() {
-////
-////
-////        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED &&
-////                ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-////
-////
-////
-////            fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-////                @Override
-////                public void onComplete(@NonNull Task<Location> task) {
-////
-////                    Location location = task.getResult();
-////                    if (location != null) {
-////
-////                        Geocoder geocoder = new Geocoder(MainActivity.this, Locale.getDefault());
-////
-////                        try {
-////
-////                            List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-////
-////                            LocationInfo locationInfo = new LocationInfo("" + addresses.get(0).getLatitude(),
-////                                    "" + addresses.get(0).getLongitude(),
-////                                    "" + addresses.get(0).getCountryName(),
-////                                    "" + addresses.get(0).getLocality(),
-////                                    "" + addresses.get(0).getAddressLine(0));
-////
-////                            MyLocationSecond location2 = new MyLocationSecond(addresses.get(0).getLatitude(), addresses.get(0).getLongitude());
-////
-////                            databaseReference.setValue(location2);
-////
-////                            Toast.makeText(MainActivity.this, "Location Sent", Toast.LENGTH_SHORT).show();
-////
-////                        } catch (IOException e) {
-////                            e.printStackTrace();
-////                        }
-////
-////                    }
-////
-////                }
-////            });
-//
-//
-//        } else {
-//
-//            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION, Manifest.permission.ACCESS_COARSE_LOCATION}, 44);
-//            Toast.makeText(this, "Get Location Permissions", Toast.LENGTH_SHORT).show();
-//
-//        }
-//
-//    }
 
 
 
     private void getlocationupdates() {
 
+        if(manager == null){
+            Log.d("TAG Si", "NOOOOOOOOOO");
+        }
+
         if (manager != null){
+
+            Log.d("TAG Si", "YESSS");
 
             if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED &&
                     ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION)== PackageManager.PERMISSION_GRANTED) {
@@ -225,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             }
 
             else{
-                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},101);
+                ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION},44);
             }
 
         }
@@ -236,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        if (requestCode == 101){
+        if (requestCode == 44){
 
             if (grantResults.length>0 && grantResults[0] == PackageManager.PERMISSION_GRANTED){
                 getlocationupdates();
@@ -287,6 +248,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         currenty = event.values[1];
         currentz = event.values[2];
 
+
         if (ItisnotFirstTime){
 
             xdifference = Math.abs(currentx-lastx);
@@ -295,20 +257,34 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
             if(xdifference > shakethreshold || ydifference>shakethreshold || zdifference>shakethreshold){
 
-//                Toast.makeText(this, "The help signal has been sent!!", Toast.LENGTH_SHORT).show();
-//                Messagesent = true;
-
-
-
-                SmsManager sms = SmsManager.getDefault();
                 if (ActivityCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) != PackageManager.PERMISSION_GRANTED){
 
                     ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.SEND_SMS}, 45);
 
                 }
-                String number = "+919426026409";
-                sms.sendTextMessage(number,null,"help",null,null);
-                Toast.makeText(MainActivity.this, "Message sent to your guardian", Toast.LENGTH_SHORT).show();
+
+                SmsManager smsManager = SmsManager.getDefault();
+
+                newDatabaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        Guardian_Number = snapshot.getValue().toString();
+                        smsManager.sendTextMessage(Guardian_Number,null,"HELP",null,null);
+                        Toast.makeText(MainActivity.this, "Message sent to your guardian", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("err",error.toString());
+                    }
+                });
+
+
+
+
+
 
             }
 
@@ -373,36 +349,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
     }
 
-    private void savelocation(Location location) {
+    void savelocation(Location location) {
 
         databaseReference.setValue(location);
-        //Toast.makeText(this, "Live Location Sent", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Live Location Sent", Toast.LENGTH_SHORT).show();
 
     }
 
-    private String readChanges() {
-        newDatabaseReference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    try {
-
-                            guardianNumber = snapshot.getValue().toString();
-
-
-
-                    }catch (Exception e){
-                        Toast.makeText(MainActivity.this, "There is no guardian to this number", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-
-        return guardianNumber;
-    }
 }
