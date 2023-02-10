@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class GuardianInformationActivity extends AppCompatActivity {
 
-    EditText et_name1, et_phone1; //et_name2, et_phone2;
+    EditText et_name1, et_phone1, et_phone3, et_phone2; //et_name2, et_phone2;
     Button bt_done;
 
     FirebaseDatabase firebaseDatabase;
@@ -38,6 +38,8 @@ public class GuardianInformationActivity extends AppCompatActivity {
 
         et_name1 = findViewById(R.id.et_name1);
         et_phone1 = findViewById(R.id.et_phone1);
+        et_phone2 = findViewById(R.id.et_phone2);
+        et_phone3 = findViewById(R.id.et_phone3);
 
 
 
@@ -54,11 +56,32 @@ public class GuardianInformationActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                GuardianInfo guardianInfo = new GuardianInfo(et_name1.getText().toString(),"+91" + et_phone1.getText().toString());
-                databaseReference.setValue(guardianInfo);
-                Intent in = new Intent(GuardianInformationActivity.this, MainActivity.class);
-                in.putExtra("userNumber", userNumber);
-                startActivity(in);
+                if(et_phone2.getText().toString() == null || et_phone3.getText().toString() == null ) {
+
+
+                    GuardianInfo guardianInfo = new GuardianInfo(et_name1.getText().toString(), "+91" + et_phone1.getText().toString(), "+91" + et_phone2.getText().toString(), "+91" + et_phone3.getText().toString());
+                    databaseReference.setValue(guardianInfo);
+                    Intent in = new Intent(GuardianInformationActivity.this, MainActivity.class);
+                    in.putExtra("userNumber", userNumber);
+                    startActivity(in);
+                }
+                else{
+                    GuardianInfo guardianInfo = new GuardianInfo(et_name1.getText().toString(), "+91" + et_phone1.getText().toString(), "+91" + et_phone2.getText().toString(), "+91" + et_phone3.getText().toString());
+                    databaseReference.setValue(guardianInfo);
+                    Intent in = new Intent(GuardianInformationActivity.this, MainActivity.class);
+                    in.putExtra("userNumber", userNumber);
+                    startActivity(in);
+                }
+
+                if(et_phone2.getText().toString() == null && et_phone3.getText().toString() == null ) {
+
+
+                    GuardianInfo guardianInfo = new GuardianInfo(et_name1.getText().toString(), "+91" + et_phone1.getText().toString(), "+91" + et_phone2.getText().toString(), "+91" + et_phone3.getText().toString());
+                    databaseReference.setValue(guardianInfo);
+                    Intent in = new Intent(GuardianInformationActivity.this, MainActivity.class);
+                    in.putExtra("userNumber", userNumber);
+                    startActivity(in);
+                }
 
             }
         });

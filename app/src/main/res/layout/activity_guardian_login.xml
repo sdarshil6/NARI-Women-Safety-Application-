@@ -4,99 +4,129 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/activity_guardian_login_bg"
+    android:background="#FFFEF5ED"
     tools:context=".GuardianLoginActivity">
 
     <EditText
-        android:id="@+id/et_guardianNumberLogin"
-        android:layout_width="314dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="132dp"
+        android:id="@+id/et_enterGuardianOTP"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="424dp"
+        android:backgroundTint="@color/orange"
         android:ems="10"
-        android:hint="Enter Number"
+        android:hint="Enter Your OTP Here"
         android:inputType="phone"
-        android:textColor="#070707"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.widget.Button
+        android:id="@+id/bt_guardianOTPSend"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="356dp"
+        android:backgroundTint="#EF8254"
+        android:text="Send OTP"
+        android:background="@drawable/button_capsule"
+        android:textColor="#FFFFFF"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.412"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/bt_guardianOTPSend"
-        android:layout_width="187dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="216dp"
-        android:text="Send OTP"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et_enterGuardianOTP"
-        android:layout_width="261dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="296dp"
-        android:background="@drawable/activity_guardian_login_bg"
-        android:ems="10"
-        android:inputType="phone"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.413"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/bt_verifyGuardianOTP"
-        android:layout_width="127dp"
-        android:layout_height="55dp"
-        android:layout_marginTop="384dp"
-        android:text="Verify"
-        android:textSize="20sp"
-        android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/et_userPhoneNumber"
-        android:layout_width="281dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="476dp"
-        android:ems="10"
-        android:hint="Enter User Phone Number"
-        android:inputType="phone"
-        android:textColor="#050505"
-        android:textSize="22sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
-        android:id="@+id/bt_ok"
-        android:layout_width="107dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="556dp"
-        android:text="Ok"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/et_guardianName"
-        android:layout_width="314dp"
-        android:layout_height="63dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="200dp"
+        android:backgroundTint="#FFEF8254"
         android:ems="10"
-        android:hint="Enter name here"
+        android:hint="Enter Guardian's Name"
         android:inputType="textPersonName"
-        android:textSize="22sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <android.widget.Button
+        android:id="@+id/bt_ok"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="648dp"
+        android:background="@drawable/button_capsule"
+        android:backgroundTint="#FFEF8254"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_guardianNumberLogin"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="276dp"
+        android:backgroundTint="#FFEF8254"
+        android:ems="10"
+        android:hint="Enter Guardian's Number"
+        android:inputType="phone"
+        android:textColor="#070707"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_userPhoneNumber"
+        android:layout_width="300dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="572dp"
+        android:backgroundTint="#FFEF8254"
+        android:ems="10"
+        android:hint="Enter User Phone Number"
+        android:inputType="phone"
+        android:textColor="#050505"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <android.widget.Button
+        android:id="@+id/bt_verifyGuardianOTP"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="504dp"
+        android:background="@drawable/button_capsule"
+        android:backgroundTint="@color/orange"
+        android:text="Verify"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="202dp"
+        android:layout_height="164dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028"
+        app:srcCompat="@drawable/guardian_final" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

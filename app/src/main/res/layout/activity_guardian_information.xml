@@ -5,20 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/activity_register_bg"
+    android:backgroundTint="#FEF5ED"
     tools:context=".GuardianInformationActivity">
 
     <EditText
         android:id="@+id/et_name1"
         android:layout_width="280dp"
         android:layout_height="58dp"
-        android:layout_marginTop="220dp"
+        android:layout_marginTop="268dp"
         android:ems="10"
-        android:hint="Enter name"
+        android:hint="Enter Guardian Name"
         android:inputType="textPersonName"
         android:textColor="#090909"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -26,9 +27,39 @@
         android:id="@+id/et_phone1"
         android:layout_width="280dp"
         android:layout_height="55dp"
-        android:layout_marginTop="304dp"
+        android:layout_marginTop="336dp"
         android:ems="10"
-        android:hint="Enter number"
+        android:hint="Enter Guardian Number"
+        android:inputType="phone"
+        android:textColor="#020202"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_phone3"
+        android:layout_width="280dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="464dp"
+        android:ems="10"
+        android:hint="Enter Friend Number"
+        android:inputType="phone"
+        android:textColor="#020202"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/et_phone2"
+        android:layout_width="280dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="400dp"
+        android:ems="10"
+        android:hint="Enter Other Guardian Number"
         android:inputType="phone"
         android:textColor="#020202"
         android:textSize="24sp"
@@ -37,12 +68,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/bt_done"
         android:layout_width="127dp"
         android:layout_height="59dp"
-        android:layout_marginBottom="292dp"
+        android:layout_marginBottom="132dp"
+        android:background="@drawable/button_capsule"
+        android:backgroundTint="#EF8254"
         android:text="Submit"
+        android:textColor="@color/white"
         android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -50,15 +84,37 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="120dp"
+        android:layout_width="315dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="196dp"
+        android:fontFamily="monospace"
         android:text="Enter Guardian Information"
+        android:textAlignment="center"
         android:textColor="@color/black"
-        android:textSize="27sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="281dp"
+        android:layout_height="147dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.536"
+        app:srcCompat="@drawable/xyz_re" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="408dp"
+        android:layout_height="120dp"
+        android:scaleType="fitXY"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/vieww" />
 </androidx.constraintlayout.widget.ConstraintLayout>

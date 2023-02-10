@@ -4,27 +4,26 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#FEF5ED"
     android:padding="16dp">
 
+
     <pl.droidsonroids.gif.GifImageView
-        android:id="@+id/gifImageView"
-        android:layout_width="307dp"
-        android:layout_height="318dp"
-        android:layout_marginTop="32dp"
+        android:layout_width="224dp"
+        android:layout_height="381dp"
+        android:layout_marginTop="4dp"
         android:background="#fff"
         android:scaleType="fitXY"
-        android:src="@drawable/gif"
+        android:src="@drawable/shake1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="428dp"
+        android:layout_marginTop="364dp"
         android:fontFamily="sans-serif-black"
         android:text="SHAKE YOUR PHONE FOR HELP"
         android:textAlignment="center"
@@ -34,41 +33,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageButton"
-        android:layout_width="83dp"
-        android:layout_height="94dp"
-        android:layout_marginTop="500dp"
-        android:clickable="true"
-        android:scaleType="centerCrop"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.466"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/fc"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Button
+    <android.widget.Button
         android:id="@+id/bt_sendLocation"
-        android:layout_width="355dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="604dp"
+        android:layout_width="244dp"
+        android:layout_height="93dp"
+        android:layout_marginTop="480dp"
+        android:backgroundTint="#EF8254"
         android:text="Send Live Location to guardian"
+        android:background="@drawable/button_capsule"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/bt_signOut"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="372dp"
-        android:text="SIGN OUT"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.485"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

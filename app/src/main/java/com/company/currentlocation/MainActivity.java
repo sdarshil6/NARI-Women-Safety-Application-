@@ -30,6 +30,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.company.currentlocation.databinding.ActivityMainBinding;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.model.LatLng;
@@ -47,19 +48,22 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity implements SensorEventListener, LocationListener{
+public class MainActivity extends BaseDrawerActivity implements SensorEventListener, LocationListener{
 
     FusedLocationProviderClient fusedLocationProviderClient;
-    Button bt_sendLocation, bt_signOut;
+    Button bt_sendLocation;
     ImageView imageButton;
-    String guardianNumber;
+
+    public static String userNum;
 
 
 
 
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
-    DatabaseReference newDatabaseReference;
+    public static DatabaseReference newDatabaseReference;
+    public static DatabaseReference newDatabaseReference2;
+    public static DatabaseReference newDatabaseReference3;
 
     String formattedDate;
 
@@ -83,21 +87,30 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     public String Guardian_Number;
 
+    ActivityMainBinding activityMainBinding;
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(R.layout.activity_main); //AppCompat
+        setContentView(activityMainBinding.getRoot()); //BaseDrawer....
+        allocateActivityTitle("Home");
 
         Intent i = getIntent();
         userNumber = i.getStringExtra("userNumber");
+        userNum = userNumber;
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference().child("Users").child(userNumber).child("LocatinInfo");
         newDatabaseReference = firebaseDatabase.getReference().child("Users").child(userNumber).child("GuardianInfo").child("guardianPhone1");
+        newDatabaseReference2 = firebaseDatabase.getReference().child("Users").child(userNumber).child("GuardianInfo").child("guardianPhone2");
+        newDatabaseReference3 = firebaseDatabase.getReference().child("Users").child(userNumber).child("GuardianInfo").child("friendPhone");
         manager = (LocationManager) getSystemService(LOCATION_SERVICE);
 
-        imageButton = findViewById(R.id.imageButton);
+
 
         Calendar c = Calendar.getInstance();
         System.out.println("Current dateTime => " + c.getTime());
@@ -106,7 +119,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
 
         bt_sendLocation = findViewById(R.id.bt_sendLocation);
-        bt_signOut = findViewById(R.id.bt_signOut);
+
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
@@ -121,15 +134,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
             isaccelerometerSensorAvailable=false;
         }
 
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(MainActivity.this, FakeCallActivity.class);
-                startActivity(intent);
-
-            }
-        });
+        
 
         bt_sendLocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -142,15 +147,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 i.putExtra("userNumber", userNumber);
                 startActivity(i);
 
-            }
-        });
-
-        bt_signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                RegisterActivity.auth.signOut();
-                finish();
-                startActivity(new Intent(MainActivity.this, BasicLoginActivity.class));
             }
         });
 
@@ -281,6 +277,46 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     }
                 });
 
+                newDatabaseReference2.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        String guardianNumber2 = snapshot.getValue().toString();
+                        if(guardianNumber2 == null){
+                            Toast.makeText(MainActivity.this, "Other guardian number not present",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            smsManager.sendTextMessage(guardianNumber2, null, "HELP", null, null);
+                            Toast.makeText(MainActivity.this, "Message sent to your guardian", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("err",error.toString());
+                    }
+                });
+
+                newDatabaseReference3.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        String friendNumber = snapshot.getValue().toString();
+                        if(friendNumber == null){
+                            Toast.makeText(MainActivity.this, "friend number not present",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            smsManager.sendTextMessage(friendNumber, null, "HELP", null, null);
+                            Toast.makeText(MainActivity.this, "Message sent to your friend", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("err",error.toString());
+                    }
+                });
+
 
 
 
@@ -352,7 +388,6 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     void savelocation(Location location) {
 
         databaseReference.setValue(location);
-        Toast.makeText(this, "Live Location Sent", Toast.LENGTH_SHORT).show();
 
     }
 

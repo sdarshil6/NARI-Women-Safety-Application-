@@ -4,33 +4,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/basic_login_bg"
+    android:background="#FEF5ED"
     tools:context=".MainActivity">
 
-    <Button
+    <android.widget.Button
         android:id="@+id/bt_guardianLogin"
         android:layout_width="299dp"
         android:layout_height="91dp"
-        android:layout_marginTop="464dp"
-        android:backgroundTint="#4467cc"
+        android:layout_marginTop="508dp"
+        android:backgroundTint="#EF8254"
         android:text="GUARDIAN LOGIN"
+        android:background="@drawable/button_capsule"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/bt_userLogin"
         android:layout_width="300dp"
         android:layout_height="96dp"
-        android:layout_marginTop="344dp"
-        android:backgroundTint="#4467cc"
+        android:layout_marginTop="368dp"
+        android:backgroundTint="#EF8254"
         android:text="USER LOGIN"
+        android:background="@drawable/button_capsule"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView12"
+        android:layout_width="411dp"
+        android:layout_height="362dp"
+        android:scaleType="fitXY"
+        app:srcCompat="@drawable/log"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="-96dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

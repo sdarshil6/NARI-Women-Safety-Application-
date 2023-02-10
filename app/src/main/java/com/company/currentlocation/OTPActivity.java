@@ -57,6 +57,7 @@ public class OTPActivity extends AppCompatActivity {
         Bundle bundle = i.getExtras();
 
         phone = bundle.getString("pn");
+        Log.d("OTPActivity User Number",phone);
         fullname = bundle.getString("fullname");
         age = bundle.getString("age");
         gender = bundle.getString("gender");

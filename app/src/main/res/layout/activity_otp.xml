@@ -4,43 +4,47 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/activity_register_bg"
+    android:background="@color/cream"
     tools:context=".OTPActivity">
 
 
     <EditText
         android:id="@+id/et_otpText"
-        android:layout_width="325dp"
-        android:layout_height="69dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_marginTop="224dp"
+        android:backgroundTint="@color/orange"
         android:ems="10"
         android:hint="Enter OTP here"
         android:inputType="numberSigned"
         android:textColor="#050505"
-        android:textSize="30sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <android.widget.Button
         android:id="@+id/bt_submit"
-        android:layout_width="147dp"
-        android:layout_height="68dp"
+        android:layout_width="200dp"
+        android:layout_height="60dp"
         android:layout_marginTop="360dp"
+        android:backgroundTint="@color/orange"
         android:text="SUBMIT"
-        android:textSize="22sp"
+        android:background="@drawable/button_capsule"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/tv_message"
-        android:layout_width="353dp"
-        android:layout_height="75dp"
+        android:layout_width="300dp"
+        android:layout_height="60dp"
         android:layout_marginTop="84dp"
+        android:backgroundTint="@color/orange"
         android:text="TextView"
         android:textColor="#090808"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"

@@ -3,7 +3,9 @@ package com.company.currentlocation;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -17,6 +19,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.PhoneAuthCredential;
 import com.google.firebase.auth.PhoneAuthOptions;
 import com.google.firebase.auth.PhoneAuthProvider;
@@ -38,19 +41,27 @@ public class UserLoginActivity extends AppCompatActivity {
 
     String userLoginNumber;
 
-    FirebaseAuth mAuth = FirebaseAuth.getInstance();
+    public static FirebaseAuth mAuth = FirebaseAuth.getInstance();
 
     private String verificationId;
+
+    public static SharedPreferences sp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_user_login);
+
+        if(getSupportActionBar() != null){
+            getSupportActionBar().hide();
+        }
 
         et_numberLogin = findViewById(R.id.et_numberLogin);
         bt_otpSend = findViewById(R.id.bt_otpSend);
         et_enterOTP = findViewById(R.id.et_enterOTP);
         bt_verify = findViewById(R.id.bt_verifyOTP);
         tv_goToRegister = findViewById(R.id.tv_goToRegister);
+
+        sp = getSharedPreferences("MyUserPrefs", Context.MODE_PRIVATE);
 
         bt_otpSend.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -196,9 +207,13 @@ public class UserLoginActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
 
                             Toast.makeText(UserLoginActivity.this, "OTP VERIFIED", Toast.LENGTH_SHORT).show();
-
+                            finish();
                             Intent i = new Intent(UserLoginActivity.this,MainActivity.class);
                             i.putExtra("userNumber", "+91" + et_numberLogin.getText().toString());
+                            SharedPreferences.Editor editor = sp.edit();
+                            editor.putString("userNumber","+91" + et_numberLogin.getText().toString());
+                            editor.putString("boolean","true");
+                            editor.commit();
                             startActivity(i);
 
 
@@ -211,5 +226,21 @@ public class UserLoginActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser user = mAuth.getCurrentUser();
+        if(user != null){
+
+            Intent i = new Intent(UserLoginActivity.this, MainActivity.class);
+            SharedPreferences sp = getApplicationContext().getSharedPreferences("MyUserPrefs",MODE_PRIVATE);
+            String userno = sp.getString("userNumber","");
+            i.putExtra("userNumber",userno);
+            startActivity(i);
+            finish();
+
+        }
     }
 }
