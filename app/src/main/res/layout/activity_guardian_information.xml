@@ -8,33 +8,49 @@
     android:backgroundTint="#FEF5ED"
     tools:context=".GuardianInformationActivity">
 
-    <EditText
-        android:id="@+id/et_name1"
-        android:layout_width="280dp"
-        android:layout_height="58dp"
-        android:layout_marginTop="268dp"
-        android:ems="10"
-        android:hint="Enter Guardian Name"
-        android:inputType="textPersonName"
-        android:textColor="#090909"
-        android:textSize="24sp"
+    <android.widget.Button
+        android:id="@+id/bt_done"
+        android:layout_width="127dp"
+        android:layout_height="59dp"
+        android:background="@drawable/button_capsule"
+        android:backgroundTint="#EF8254"
+        android:text="Submit"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.837" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="315dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="224dp"
+        android:fontFamily="monospace"
+        android:text="Enter Guardian Information"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_phone1"
+        android:id="@+id/et_phone2"
         android:layout_width="280dp"
         android:layout_height="55dp"
-        android:layout_marginTop="336dp"
+        android:layout_marginTop="428dp"
+        android:backgroundTint="@color/orange"
         android:ems="10"
-        android:hint="Enter Guardian Number"
+        android:hint="Enter Other Guardian Number"
         android:inputType="phone"
         android:textColor="#020202"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +58,8 @@
         android:id="@+id/et_phone3"
         android:layout_width="280dp"
         android:layout_height="55dp"
-        android:layout_marginTop="464dp"
+        android:layout_marginTop="492dp"
+        android:backgroundTint="@color/orange"
         android:ems="10"
         android:hint="Enter Friend Number"
         android:inputType="phone"
@@ -54,46 +71,34 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/et_phone2"
+        android:id="@+id/et_phone1"
         android:layout_width="280dp"
         android:layout_height="55dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="364dp"
+        android:backgroundTint="@color/orange"
         android:ems="10"
-        android:hint="Enter Other Guardian Number"
+        android:hint="Enter Guardian Number"
         android:inputType="phone"
         android:textColor="#020202"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <android.widget.Button
-        android:id="@+id/bt_done"
-        android:layout_width="127dp"
-        android:layout_height="59dp"
-        android:layout_marginBottom="132dp"
-        android:background="@drawable/button_capsule"
-        android:backgroundTint="#EF8254"
-        android:text="Submit"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="315dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="196dp"
-        android:fontFamily="monospace"
-        android:text="Enter Guardian Information"
-        android:textAlignment="center"
-        android:textColor="@color/black"
+    <EditText
+        android:id="@+id/et_name1"
+        android:layout_width="280dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="296dp"
+        android:backgroundTint="@color/orange"
+        android:ems="10"
+        android:hint="Enter Guardian Name"
+        android:inputType="textPersonName"
+        android:textColor="#090909"
         android:textSize="24sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -108,13 +113,4 @@
         app:layout_constraintVertical_bias="0.536"
         app:srcCompat="@drawable/xyz_re" />
 
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="408dp"
-        android:layout_height="120dp"
-        android:scaleType="fitXY"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/vieww" />
 </androidx.constraintlayout.widget.ConstraintLayout>

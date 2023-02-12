@@ -266,7 +266,26 @@ public class MainActivity extends BaseDrawerActivity implements SensorEventListe
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                         Guardian_Number = snapshot.getValue().toString();
-                        smsManager.sendTextMessage(Guardian_Number,null,"HELP",null,null);
+                        databaseReference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                MyLocationSecond myLocationSecond = snapshot.getValue(MyLocationSecond.class);
+                                String message
+                                        = "Hey, " + Guardian_Number
+                                        + " I am in DANGER, i need help. Please urgently reach me out. Here are my coordinates.\n "
+                                        + "http://maps.google.com/?q="
+                                        + myLocationSecond.getLatitude() + ","
+                                        + myLocationSecond.getLongitude();
+                                smsManager.sendTextMessage(Guardian_Number,null,message,null,null);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
                         Toast.makeText(MainActivity.this, "Message sent to your guardian", Toast.LENGTH_SHORT).show();
 
                     }
@@ -286,8 +305,26 @@ public class MainActivity extends BaseDrawerActivity implements SensorEventListe
                             Toast.makeText(MainActivity.this, "Other guardian number not present",Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            smsManager.sendTextMessage(guardianNumber2, null, "HELP", null, null);
-                            Toast.makeText(MainActivity.this, "Message sent to your guardian", Toast.LENGTH_SHORT).show();
+                            databaseReference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    MyLocationSecond myLocationSecond = snapshot.getValue(MyLocationSecond.class);
+                                    String message
+                                            = "Hey, " + Guardian_Number
+                                            + " I am in DANGER, i need help. Please urgently reach me out. Here are my coordinates.\n "
+                                            + "http://maps.google.com/?q="
+                                            + myLocationSecond.getLatitude() + ","
+                                            + myLocationSecond.getLongitude();
+                                    smsManager.sendTextMessage(guardianNumber2,null,message,null,null);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                            Toast.makeText(MainActivity.this, "Message sent to second guardian", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -306,7 +343,25 @@ public class MainActivity extends BaseDrawerActivity implements SensorEventListe
                             Toast.makeText(MainActivity.this, "friend number not present",Toast.LENGTH_SHORT).show();
                         }
                         else {
-                            smsManager.sendTextMessage(friendNumber, null, "HELP", null, null);
+                            databaseReference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    MyLocationSecond myLocationSecond = snapshot.getValue(MyLocationSecond.class);
+                                    String message
+                                            = "Hey, " + friendNumber
+                                            + " I am in DANGER, i need help. Please urgently reach me out. Here are my coordinates.\n "
+                                            + "http://maps.google.com/?q="
+                                            + myLocationSecond.getLatitude() + ","
+                                            + myLocationSecond.getLongitude();
+                                    smsManager.sendTextMessage(friendNumber,null,message,null,null);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
                             Toast.makeText(MainActivity.this, "Message sent to your friend", Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -316,14 +371,7 @@ public class MainActivity extends BaseDrawerActivity implements SensorEventListe
                         Log.d("err",error.toString());
                     }
                 });
-
-
-
-
-
-
             }
-
         }
 
         lastx = currentx;
@@ -362,7 +410,7 @@ public class MainActivity extends BaseDrawerActivity implements SensorEventListe
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
 
-        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+        if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
 
             onkeypressed++;
 
@@ -372,6 +420,130 @@ public class MainActivity extends BaseDrawerActivity implements SensorEventListe
                 startActivity(i);
             }
         }
+
+        if(keyCode == KeyEvent.KEYCODE_VOLUME_DOWN){
+
+            onkeypressed++;
+            if(onkeypressed == 3){
+                onkeypressed = 0;
+
+                SmsManager smsManager = SmsManager.getDefault();
+
+                newDatabaseReference.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        Guardian_Number = snapshot.getValue().toString();
+                        databaseReference.addValueEventListener(new ValueEventListener() {
+                            @Override
+                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                MyLocationSecond myLocationSecond = snapshot.getValue(MyLocationSecond.class);
+                                String message
+                                        = "Hey, " + Guardian_Number
+                                        + " I am in DANGER, i need help. Please urgently reach me out. Here are my coordinates.\n "
+                                        + "http://maps.google.com/?q="
+                                        + myLocationSecond.getLatitude() + ","
+                                        + myLocationSecond.getLongitude();
+                                smsManager.sendTextMessage(Guardian_Number,null,message,null,null);
+                            }
+
+                            @Override
+                            public void onCancelled(@NonNull DatabaseError error) {
+
+                            }
+                        });
+
+
+                        Toast.makeText(MainActivity.this, "Message sent to your guardian", Toast.LENGTH_SHORT).show();
+
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("err",error.toString());
+                    }
+                });
+
+                newDatabaseReference2.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        String guardianNumber2 = snapshot.getValue().toString();
+                        if(guardianNumber2 == null){
+                            Toast.makeText(MainActivity.this, "Other guardian number not present",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            databaseReference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    MyLocationSecond myLocationSecond = snapshot.getValue(MyLocationSecond.class);
+                                    String message
+                                            = "Hey, " + Guardian_Number
+                                            + " I am in DANGER, i need help. Please urgently reach me out. Here are my coordinates.\n "
+                                            + "http://maps.google.com/?q="
+                                            + myLocationSecond.getLatitude() + ","
+                                            + myLocationSecond.getLongitude();
+                                    smsManager.sendTextMessage(guardianNumber2,null,message,null,null);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                            Toast.makeText(MainActivity.this, "Message sent to second guardian", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("err",error.toString());
+                    }
+                });
+
+                newDatabaseReference3.addValueEventListener(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+
+                        String friendNumber = snapshot.getValue().toString();
+                        if(friendNumber == null){
+                            Toast.makeText(MainActivity.this, "friend number not present",Toast.LENGTH_SHORT).show();
+                        }
+                        else {
+                            databaseReference.addValueEventListener(new ValueEventListener() {
+                                @Override
+                                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                    MyLocationSecond myLocationSecond = snapshot.getValue(MyLocationSecond.class);
+                                    String message
+                                            = "Hey, " + friendNumber
+                                            + " I am in DANGER, i need help. Please urgently reach me out. Here are my coordinates.\n "
+                                            + "http://maps.google.com/?q="
+                                            + myLocationSecond.getLatitude() + ","
+                                            + myLocationSecond.getLongitude();
+                                    smsManager.sendTextMessage(friendNumber,null,message,null,null);
+                                }
+
+                                @Override
+                                public void onCancelled(@NonNull DatabaseError error) {
+
+                                }
+                            });
+
+                            Toast.makeText(MainActivity.this, "Message sent to your friend", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(@NonNull DatabaseError error) {
+                        Log.d("err",error.toString());
+                    }
+                });
+
+            }
+
+        }
+
         return super.onKeyDown(keyCode, event);
     }
 
